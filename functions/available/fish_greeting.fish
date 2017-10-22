@@ -35,7 +35,7 @@ function fish_greeting
     set hostname " Hostname: "(set_color $value_color)(_pretty_hostname)" "
     
     set fish_width 33
-    set indent (math $COLUMNS - $fish_width - 1)
+    set indent (math (tput cols) - $fish_width - 1)
     _print_indented $indent '                 '(set_color F00)'___'; echo
     _print_indented $indent '  ___======____='(set_color FF7F00)'-'(set_color FF0)'-'(set_color FF7F00)'-='(set_color F00)')'; echo
     _print_indented $indent '/T            \_'(set_color FF0)'--='(set_color FF7F00)'=='(set_color F00)')'; echo
