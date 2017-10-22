@@ -11,7 +11,10 @@ function _pretty_uptime
   set now_in_secs (date +%s)
   set uptime_sec (math (date '+%s') - (string match --regex '\\d+' (sysctl -n kern.boottime | cut -f 4 -d ' ')))
   # Subtract a week to correct the date for 1970.
-  date -r (math $uptime_sec - 86400) -u +'%-Ww %-jd %-Hh %-Mm'
+  set weeks (date -r (math $uptime_sec) -u +'%-Ww ')
+  set days_minus_one (math (date -r (math $uptime_sec) -u +'%-j') - 1)
+  set rest (date -r (math $uptime_sec) -u +'d %-Hh %-Mm')
+  echo -n $weeks$days_minus_one$rest
 end
 
 function _pretty_hostname
