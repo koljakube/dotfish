@@ -44,8 +44,8 @@ function fish_greeting
     set you_are  " You are:   "(set_color $value_color)(whoami)" "
     set uptime   " Uptime:    "(set_color $value_color)(_pretty_uptime)" "
     set hostname " Hostname:  "(set_color $value_color)(_pretty_hostname)" "
-    set ip_en0   " IP (WiFi): "(set_color $value_color)(_interface_ip en0)" "
-    set ip_en1   " IP (LAN):  "(set_color $value_color)(_interface_ip en1)" "
+    set ip_wifi  " IP (WiFi): "(set_color $value_color)(_interface_ip en0)" "
+    set ip_lan   " IP (LAN):  "(set_color $value_color)(_interface_ip en4)" "
     
     set fish_width 33
     set indent (math (tput cols) - $fish_width - 1)
@@ -60,10 +60,10 @@ function fish_greeting
     echo -n (set_color $label_color)$uptime(set_color $after_color)
     _print_indented (math $indent - (string length $uptime) + $set_color_width) '   \_____/JJJ'(set_color FF7F00)'~~'(set_color FF0)'~~    '(set_color F00)'\\'; echo
     _print_indented $indent '   '(set_color FF7F00)'/ '(set_color FF0)'\  '(set_color FF0)', \\'(set_color F00)'J'(set_color FF7F00)'~~~'(set_color FF0)'~~     '(set_color FF7F00)'\\'; echo
-    echo -n (set_color $label_color)$ip_en0(set_color $after_color)
-    _print_indented (math $indent - (string length $ip_en0) + $set_color_width) '  (-'(set_color FF0)'\)'(set_color F00)'\='(set_color FF7F00)'|'(set_color FF0)'\\\\\\'(set_color FF7F00)'~~'(set_color FF0)'~~       '(set_color FF7F00)'L_'(set_color FF0)'_'; echo
-    echo -n (set_color $label_color)$ip_en1(set_color $after_color)
-    _print_indented (math $indent - (string length $ip_en1) + $set_color_width) '  '(set_color FF7F00)'('(set_color F00)'\\'(set_color FF7F00)'\\)  ('(set_color FF0)'\\'(set_color FF7F00)'\\\)'(set_color F00)'_           '(set_color FF0)'\=='(set_color FF7F00)'__'; echo
+    echo -n (set_color $label_color)$ip_wifi(set_color $after_color)
+    _print_indented (math $indent - (string length $ip_wifi) + $set_color_width) '  (-'(set_color FF0)'\)'(set_color F00)'\='(set_color FF7F00)'|'(set_color FF0)'\\\\\\'(set_color FF7F00)'~~'(set_color FF0)'~~       '(set_color FF7F00)'L_'(set_color FF0)'_'; echo
+    echo -n (set_color $label_color)$ip_lan(set_color $after_color)
+    _print_indented (math $indent - (string length $ip_lan) + $set_color_width) '  '(set_color FF7F00)'('(set_color F00)'\\'(set_color FF7F00)'\\)  ('(set_color FF0)'\\'(set_color FF7F00)'\\\)'(set_color F00)'_           '(set_color FF0)'\=='(set_color FF7F00)'__'; echo
     _print_indented $indent '   '(set_color F00)'\V    '(set_color FF7F00)'\\\\'(set_color F00)'\) =='(set_color FF7F00)'=_____   '(set_color FF0)'\\\\\\\\'(set_color FF7F00)'\\\\'; echo
     _print_indented $indent '          '(set_color F00)'\V)     \_) '(set_color FF7F00)'\\\\'(set_color FF0)'\\\\JJ\\'(set_color FF7F00)'J\)'; echo
     _print_indented $indent '                      '(set_color F00)'/'(set_color FF7F00)'J'(set_color FF0)'\\'(set_color FF7F00)'J'(set_color F00)'T\\'(set_color FF7F00)'JJJ'(set_color F00)'J)'; echo
